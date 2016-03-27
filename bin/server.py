@@ -46,6 +46,7 @@ app = Flask(__name__)
 app.config["default_engine"] = engine
 app.config["dax.imgserv.default_source"] = "/lsst7/releaseW13EP"
 
+
 @app.route('/')
 def getRoot():
     fmt = request.accept_mimetypes.best_match(['application/json', 'text/html'])
@@ -56,6 +57,7 @@ def getRoot():
                 "<a href='db'>/db</a.")
     return "LSST Web Service here. I currently support: /meta, /image, /db."
 
+
 @app.route('/db')
 def getDb():
     '''Lists supported versions for /db.'''
@@ -64,6 +66,7 @@ def getDb():
         return "<a href='db/v0'>v0</a>"
     return json.dumps("v0")
 
+
 @app.route('/image')
 def getImage():
     '''Lists supported versions for /image.'''
@@ -71,6 +74,7 @@ def getImage():
     if fmt == 'text/html':
         return "<a href='image/v0'>v0</a>"
     return json.dumps("v0")
+
 
 @app.route('/meta')
 def getMeta():
